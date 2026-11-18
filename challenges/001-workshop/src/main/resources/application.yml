@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: workshop
+
+  # DB 는 루트 compose.yml 의 postgres 하나를 같이 쓰고, 과제마다 schema 로 분리한다.
+  datasource:
+    url: jdbc:postgresql://localhost:15440/backend_challenge?currentSchema=workshop
+    username: ${DB_USERNAME:challenge}
+    password: ${DB_PASSWORD:letsrock}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    schemas: workshop   # 없으면 flyway 가 만들어 준다
+
+server:
+  port: 8081   # 과제 번호에 맞춰 8081, 8082 ... 로 두면 동시에 띄워도 안 겹친다

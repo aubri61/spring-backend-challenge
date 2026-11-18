@@ -1,4 +1,4 @@
-package dev.aubri.spring_backend_practice;
+package dev.aubri.workshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
-class SpringBackendPracticeApplicationTests {
+class WorkshopApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,1 +1,26 @@
-rootProject.name = 'spring-backend-practice'
+pluginManagement {
+    includeBuild('build-logic')
+}
+
+rootProject.name = 'spring-backend-challenge'
+
+// challenges/ 아래에서 build.gradle 이 있는 폴더를 자동으로 모듈 등록한다.
+// 새 과제는 폴더만 만들면 되고, 여기를 고칠 필요가 없다.
+//   challenges/001-workshop/            -> :001-workshop
+//   challenges/coupon/004-concurrency/  -> :004-concurrency  (시리즈 폴더로 묶어도 OK)
+def registerChallenge = { File dir ->
+    include ":${dir.name}"
+    project(":${dir.name}").projectDir = dir
+}
+
+new File(rootDir, 'challenges').eachDir { level1 ->
+    if (new File(level1, 'build.gradle').exists()) {
+        registerChallenge(level1)
+    } else {
+        level1.eachDir { level2 ->
+            if (new File(level2, 'build.gradle').exists()) {
+                registerChallenge(level2)
+            }
+        }
+    }
+}

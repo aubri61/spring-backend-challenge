@@ -1,0 +1,9 @@
+[versions]
+java = "21"
+spring-boot = "4.1.2"
+spring-dependency-management = "1.1.7"
+
+[libraries]
+# build-logic(공통 빌드 설정)에서 쓰는 Gradle 플러그인
+spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
+spring-dependency-management-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-dependency-management" }
